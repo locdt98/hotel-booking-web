@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Poly Hotel</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"> </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #D4EDF5;}
+    .navbar { background-color: #F99A12;}
+    .navbar a {  color: white !important; font-weight: bold; }
+    .carousel img { height: 400px; object-fit: cover; }
+    .card-img-top{ height: 250px; }
+    .commitment { background: white; border-radius: 10px; padding: 20px; text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);  height: 100%;}
+    .booking-form { background: #ffffff; border: 2px solid #F99A12; border-radius: 10px;
+      padding: 30px; max-width: 900px; margin: auto; }
+    footer { background: #F99A12; color: white; text-align: center; padding: 20px 0; }
+   .carousel-indicators [data-bs-target] {background: transparent; border: 2px solid #F99A12;
+      width: 12px; height: 12px; border-radius: 50%; margin: 0 5px; }
+    .carousel-indicators .active { background: #F99A12; }
+    .navbar a.dropdown-item {  color: black !important }
+</style>
+</head>
+<body>
+  <!-- Header -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand text-white" href="#">🏨 Poly Hotel</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                  Phòng
+              </a>
+              <ul class="dropdown-menu" id="ul_room_types" >
+                <li><a class="dropdown-item " href="#">Action</a></li>
+              </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="bai-viet.html">Bài viết</a></li>
+          <li class="nav-item"><a class="nav-link" href="lien-he.html">Liên hệ</a></li>
+          <li class="nav-item"><a class="nav-link" href="gioi-thieu.html">Giới thiệu</a></li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                <script>
+                  const user=JSON.parse(sessionStorage.getItem("user"));
+                  if (user!=null) document.write("Chào " + user.hoten);
+                  else document.write("Chào quý khách" );
+                </script>
+              </a>
+              <ul class="dropdown-menu">
+                <script>
+                  const token=sessionStorage.getItem("token");
+                  if (token==null) document.write(`
+                    <li><a class="dropdown-item" href="dang-nhap.html">Đăng nhập</a></li>
+                    <li><a class="dropdown-item" href="dang-ky.html">Đăng ký</a></li>
+                  `);
+                  else document.write(`
+                      <li><a class="dropdown-item" href="doi-pass.html">Đổi pass</a></li>
+                      <li><a class="dropdown-item" href="cap-nhat-tk.html">Cập nhật tài khoản</a></li>
+                      <li><a class="dropdown-item" href="thoat.html">Thoát</a></li>
+                  `);
+                </script>
+              </ul>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+ <!-- Slideshow -->
+<div id="hotelCarousel" class="carousel slide" data-bs-ride="carousel">
+  <!-- Dấu tròn phân trang -->
+  <div class="carousel-indicators" id="div_indicator">
+  </div>
+
+  <!-- Slide ảnh -->
+  <div class="carousel-inner" id="div_banner" >
+    
+  </div>
+
+  <!-- Mũi tên trái/phải -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#hotelCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Trước</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#hotelCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Tiếp</span>
+  </button>
+</div>
+
+  <!-- Phòng khách sạn -->
+  <div class="container my-5">
+    <h2 class="text-center mb-4">Phòng Khách Sạn</h2>
+    <div class="row" id="room-list">
+        
+    </div>
+  </div>
+
+  <!-- Cam kết -->
+<div class="container my-5">
+  <h2 class="text-center mb-4">Cam Kết Của Poly Hotel</h2>
+  <div class="row g-4">
+    <div class="col-md-3">
+      <div class="text-center p-4 bg-white rounded shadow-sm h-100 border border-2 border-info">
+        <div style="font-size: 40px; color: #F99A12;">💰</div>
+        <h5 class="mt-3">Giá Rẻ Nhất</h5>
+        <p class="text-muted">Cam kết mức giá cạnh tranh, phù hợp mọi ngân sách.</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="text-center p-4 bg-white rounded shadow-sm h-100 border border-2 border-info">
+        <div style="font-size: 40px; color: #F99A12;">🛏️</div>
+        <h5 class="mt-3">Phòng Đẹp & An Toàn</h5>
+        <p class="text-muted">Phòng sạch sẽ, nội thất tiện nghi, an ninh đảm bảo.</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="text-center p-4 bg-white rounded shadow-sm h-100 border border-2 border-info">
+        <div style="font-size: 40px; color: #F99A12;">🌿</div>
+        <h5 class="mt-3">Thân Thiện Môi Trường</h5>
+        <p class="text-muted">Áp dụng các giải pháp xanh và tiết kiệm năng lượng.</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="text-center p-4 bg-white rounded shadow-sm h-100 border border-2 border-info">
+        <div style="font-size: 40px; color: #F99A12;">⭐</div>
+        <h5 class="mt-3">Dịch Vụ Chất Lượng</h5>
+        <p class="text-muted">Đội ngũ chuyên nghiệp, hỗ trợ khách hàng tận tình.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Form đặt phòng -->
+<div class="container my-5">
+  <h2 class="text-center mb-3">Đặt phòng ngay</h2>
+  <div class="booking-form shadow-lg">
+    <form id="formdatphong">
+      <div class="mb-3">
+        <label class="form-label">Ngày nhận phòng</label>
+        <input type="date" class="form-control shadow-none" id="ngayden">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Ngày trả phòng</label>
+        <input type="date" class="form-control shadow-none" id="ngaydi">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Chọn loại phòng</label>
+        <select class="form-select shadow-none" id="select_loai_phong">
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Chọn phòng</label>
+        <select class="form-select shadow-none" id="select_phong">
+        </select>
+      </div>
+    <!-- Dịch vụ bổ sung -->
+    <div class="mb-3 ">
+      <label class="form-label">Dịch vụ bổ sung</label>
+      <div class="row" id="div_dich_vu_bo_sung"> </div>
+    </div>
+    <div class="text-center">
+       <button type="button" id="btnDP" class="btn btn-warning w-25"> Đặt phòng</button>
+    </div>
+    <div id="thongbao" class="fw-bold text-danger my-2 p-2"> </div>
+    <div class="my-2 text-center">
+        <label>Tạm tính:</label> <b id="tong_tien" class="fw-bold text-danger">0 VND</b>
+    </div>
+    </form>
+  </div>
+</div>
+
+
+  <!-- Bài viết nổi bật -->
+  <div class="container my-5">
+    <h2 class="text-center mb-4">Bài Viết Nổi Bật</h2>
+    <div class="row" id="blog_hot" >
+      <!-- Lặp 8 bài viết -->
+    </div>
+  </div>
+
+<!-- Dịch vụ -->
+<div class="container my-5">
+  <h2 class="text-center mb-4">Dịch Vụ Của Chúng Tôi</h2>
+  <div class="row g-4" id="div_service" >
+   
+  </div>
+</div>
+
+  <!-- Footer -->
+  <footer>
+    <p>🏨 Địa chỉ: 123 Đường ABC, TP.HCM</p>
+    <p>📞 Điện thoại: 0123 456 789</p>
+    <p>📧 Email: contact@polyhotel.vn</p>
+  </footer>
+
+
+</body></html>
+
+<!-- Room list script -->
+<script type="module" src="js/rooms_hot.js"></script>
+<script type="module" src="js/blog_hot.js"></script>
+<script type="module" src="js/services_hot.js"></script>
+<script type="module" src="js/banner.js"></script>
+<script type="module" src="js/formdatphong.js"></script>
+<script type="module" src="js/room_types.js"></script>
